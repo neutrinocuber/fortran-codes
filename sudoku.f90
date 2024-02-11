@@ -1,5 +1,5 @@
 program sudokusolver
-integer::a(9,9),i,j,k,l,m,n,p,q,cc,cr,cb
+integer::a(9,9),i,j,k,l,m,n,p,q
 print*,"enter sudoku nos. row wise,enter 0 for gaps"
 
 do p=1,9
