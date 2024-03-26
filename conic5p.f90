@@ -83,9 +83,8 @@ print*,"enter 5 points in the form (x,y)"
 read*,p
 
 500 continue
-do i=1,5
-	do j=1,5
- 		if (i==j) cycle
+do i=2,5
+	do j=i+1,5
 		if (p(j)==p(i)) then
 			print*,"no, put unique values, enter again"       ! THIS IS TO MAKE SURE USER DOESNT PUT 2 SAME POINTS
 			read*,p
