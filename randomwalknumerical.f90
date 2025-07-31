@@ -12,6 +12,7 @@ do i=1,n+1
         d(i)=2*(i-1)-n
 end do
 fan=n
+
 do i=1,n-1
         fan=i*fan
 end do
