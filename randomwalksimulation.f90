@@ -23,15 +23,16 @@ end do
 !print*,res
 x(1)=1
 do i=1,rn
-        rms(1)=rms(1)+mv(1,i)
+        rms(1)=rms(1)+(mv(1,i)**2)
 end do
+rms(1)=sqrt(rms(1)/rn)
 do j=2,n
         do i=1,rn
                 mv(j,i)=mv(j,i)+mv(j-1,i)
                 sq(j)=sq(j)+(mv(j,i)**2)
                 !print*,i,j
         end do
-        rms(j)=sqrt(sq(j)/j)
+        rms(j)=sqrt(sq(j)/rn)
         x(j)=j
         !print*,j
 end do
