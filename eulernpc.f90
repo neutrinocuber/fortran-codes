@@ -36,12 +36,15 @@ ay=(1+(x(n)**4)/4)*exp(-2*x(n))
 do i=1,11
 	y1=y(1)
 	x1=x(1)
+ 	yp=y(1)
 	do while (x1<x(n)) 
 		y1=fun(x1,y1,h(i))
+  		yp=(fun(x1+h(i),y1,h(i))+fun(x1,yp,h(i))+yp-y1)/2
 		x1=x1+h(i)
 	end do
 	er(i)=abs(ay-y1)*100/ay
-	print*,er(i)
+ 	er2(i)=abs(ay-yp)*100/yp
+	print*,er(i),er2(i)
 end do	
 open(unit=16,file="eul11.dat",status="replace")
 do i=1,n
@@ -55,7 +58,7 @@ end do
 close(30)
 open(unit=10,file="eul1e.dat",status="replace")
 do i=1,11
-	write(10,*)h(i),er(i)
+	write(10,*)h(i),er(i),er2(i)
 end do
 close(10)
 end program eul1
