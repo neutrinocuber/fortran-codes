@@ -1,12 +1,12 @@
 program eul1
 implicit none
 real,allocatable,dimension(:)::x,x2,y,y2,ypc
-real,allocatable,dimension(:)::h,er
-real::hh,x1,y1,fun,ay
+real,allocatable,dimension(:)::h,er,er2
+real::hh,x1,y1,fun,ay,yp
 integer::i,j,n
 print*,"enter number of points"
 read*,n
-allocate(x(n),y(n),y2(5*n),h(11),er(11),x2(5*n),ypc(n))
+allocate(x(n),y(n),y2(5*n),h(11),er(11),er2(11),x2(5*n),ypc(n))
 print*,"enter range of x"
 read*,x(1),x(n)
 print*,"enter value of y at initial x"
@@ -36,14 +36,14 @@ ay=(1+(x(n)**4)/4)*exp(-2*x(n))
 do i=1,11
 	y1=y(1)
 	x1=x(1)
- 	yp=y(1)
-	do while (x1<x(n)) 
+	yp=y(1)
+	do while (x1<x(n))
 		y1=fun(x1,y1,h(i))
-  		yp=(fun(x1+h(i),y1,h(i))+fun(x1,yp,h(i))+yp-y1)/2
+		yp=(fun(x1+h(i),y1,h(i))+fun(x1,yp,h(i))+yp-y1)/2
 		x1=x1+h(i)
 	end do
 	er(i)=abs(ay-y1)*100/ay
- 	er2(i)=abs(ay-yp)*100/yp
+	er2(i)=abs(ay-yp)*100/yp
 	print*,er(i),er2(i)
 end do	
 open(unit=16,file="eul11.dat",status="replace")
