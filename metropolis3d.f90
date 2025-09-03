@@ -2,7 +2,7 @@ program metrovel3
 implicit none
 real,allocatable,dimension(:,:)::v,th,eta
 real,allocatable,dimension(:)::sp,en,bs,be,pbs,pbe
-real::s,h,t,en1,en2,vmax,sg,w
+real::s,h,t,en1,en2,vmax,sg,w,tm
 real,parameter::pi=3.1415926535
 integer::i,j,n,m,ex,bns,bne
 print*,"enter no. of particles"
@@ -70,6 +70,9 @@ if (j>1 .and. j<m) m=j
 print*,m
 !v(:,:)=abs(v(:,:))
 print*,"adw"
+!do i=1,n
+!	tm=
+!end do
 do i=2,bne
         be(i)=be(1)*i
 end do
